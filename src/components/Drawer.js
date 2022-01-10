@@ -1,10 +1,14 @@
-function Drawer({onClose, items = []}) {
+function Drawer({onClose, onRemove, items = []}) {
     return(
       <div className="overlay">
         <div className="drawer">
           <h2 className="d-flex justify-between mb-30">
             Корзина
-            <img onClick={onClose} className='cu-p removeBtn' src="img/btn-remove.svg" alt="Close"/>
+            <img 
+              onClick={onClose} 
+              className='cu-p removeBtn' 
+              src="img/btn-remove.svg" 
+              alt="Close"/>
           </h2>
           <div className='items'>
             {items.map((obj) => (
@@ -17,7 +21,11 @@ function Drawer({onClose, items = []}) {
                 <p className='mb-5'>{obj.title}</p>
                 <b>{obj.price} руб</b>
               </div>
-              <img className='removeBtn' src="img/btn-remove.svg" alt="Remove"/>
+              <img 
+                onClick={() => onRemove(obj.id)}
+                className='removeBtn' 
+                src="img/btn-remove.svg" 
+                alt="Remove"/>
               </div>
               ))
             }
@@ -35,7 +43,11 @@ function Drawer({onClose, items = []}) {
                 <b>1074 руб.</b>
               </li>
             </ul>
-          <button className='greenButton'>Оформить заказ<img src="/img/arrow.svg" alt='Arrow'/></button>
+            <button 
+              className='greenButton'>
+                Оформить заказ
+                <img src="/img/arrow.svg" alt='Arrow'/>
+            </button>
           </div>
         </div>
       </div>
